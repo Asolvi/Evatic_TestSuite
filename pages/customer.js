@@ -17,12 +17,10 @@ exports.CustomerPage = class CustomerPage
         this.postlocation_dropdown = page.locator('//input[@name="cmbPostLocation"]')
         this.phone_textbox = page.locator('//input[@name="txtPhone"]')
         this.detailsTab_link = page.getByText('Details')
-        this.customerstatus_textbox = page.locator('//html/body/div[1]/div[2]/div/div/div/div[5]/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div/div[2]/div[1]/div/div/div[1]/div[2]/div[3]/div/div[1]/div/div[34]/div')
         this.save_button = page.locator('#id_99').getByRole('img')
         this.yes_button = page.locator('//div[@name="yes"]')
         this.customerNo_textbox = page.locator('//input[@name="txtCustomerNo_0"]')
         this.customerNo_dropdown = page.locator('#id_1997 div')
-        this.customerNo_dropdown_select = page.locator('//html/body/div[1]/div[4]/div/div/div[1]/div/div[2]/div/div/div[1]/div[2]/div/div')
         this.customerSearch_textbox = page.locator('//input[@name="cmbOperator"]')
         this.ok_button = page.locator('//div[@name="cmdOk"]')
         this.customerNameCheck_textbox = page.locator('//div[@id="id_1172"]')   
@@ -31,7 +29,9 @@ exports.CustomerPage = class CustomerPage
         this.customerReSearch_textbox = page.locator('//div[@role="cell" and @col="2" and @row="0" and @style="left:173px;width:156px;z-index:9999"]')
         this.noResults_popup = page.locator('//html/body/div[1]/div[7]/div[2]/div[3]')
 
-        this.status_txtBox = page.locator('//html/body/div[1]/div[2]/div/div/div/div[5]/div[1]/div[2]/div[3]/div/div/div/div/div/div/div/div/div[2]/div[1]/div/div/div[1]/div[2]/div[3]/div/div[1]/div/div[34]/input')
+        this.status_txtBox = page.locator('//input[@name="cmbCustomerStatus"]')
+        this.customerStatus_textbox = page.locator('#id_1998 div').nth(1)
+        this.customerStatus_dropdown_select = page.getByRole('cell', { name: 'Customer' }).getByText('Customer')
 
                
 
@@ -65,8 +65,9 @@ exports.CustomerPage = class CustomerPage
         await this.page.waitForTimeout(2000);
         await this.status_txtBox.clear();
         await this.status_txtBox.fill('Customer');
-        await this.customerstatus_textbox.click()
-        await this.customerNo_dropdown_select.click()
+        await this.customerStatus_textbox.click()
+        await this.page.waitForTimeout(2000);
+        await this.customerStatus_dropdown_select.click()
         await this.yes_button.click() 
         await this.customerNo_textbox.click()
         await this.customerNo_textbox.fill(customerNo)
@@ -99,12 +100,11 @@ exports.CustomerPage = class CustomerPage
 
     async customerReSearch(custNo)
     {
-        await this.page.waitForTimeout(2000)
+        await this.page.waitForTimeout(4000)
         //await this.page.pause();
         //await this.customer_dropdown1.click()
         await this.customerSearch_Link.click()
-        await this.page.waitForTimeout(2000);
-        await this.customerReSearch_textbox.click()
+        //await this.customerReSearch_textbox.click()
         //await this.customerSearch_textbox.click()
         await this.customerSearch_textbox.fill(custNo)
         await this.ok_button.click()

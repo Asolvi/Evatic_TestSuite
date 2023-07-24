@@ -15,7 +15,7 @@ test('TC_001_Evatic_Regression_ProjectModule', async ({ page }) => {
     const MachineNo =  testData('Project','TC_001_Evatic_Regression_ProjectModule','MachineNo')
     
     
-    //console.log("************Running the MachineModuleTestCases*************");
+    //console.log("************Running the ProjectModuleTestCases*************");
     await Login.gotoLoginPage()
     await Login.login()
     await Project.projectCreation(MachineNo)

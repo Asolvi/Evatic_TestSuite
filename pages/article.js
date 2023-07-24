@@ -24,7 +24,7 @@ exports.ArticlePage = class ArticlePage
         //this.articleno_re_textbox = page.locator('div:nth-child(2) > .qx-table-cell-content').first()
         this.articleno_re_textbox = page.locator('//div[@role="cell" and @col="2" and @row="0" and @style="left:173px;width:156px;z-index:9999"]')
         this.noResults_popup = page.getByText('No match!')
-        //this.noResults_popup = page.locator('//html/body/div[1]/div[6]/div[2]/div[3]')
+        //this.noResults_popup = page.locator('//html/body/div[2]/div[6]/div[2]/div[3]')
         
     }
 

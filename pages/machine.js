@@ -14,7 +14,7 @@ exports.MachinePage = class MachinePage
         this.customerNo_txtBox = page.locator('input[name="cmbCustomerNo"]')
         this.save_btn = page.locator('//div[@id="id_99"]')    
         this.userQueriesTxt_name = page.locator('//div[@name="lblUserQueries"]')
-        this.machine_txtBox = page.locator('//div[@role="cell" and @col="2" and @row="1" and @style="left:173px;width:156px;z-index:9999"]')                                     
+        this.machine_txtBox = page.locator('//div[@role="cell" and @col="2" and @row="1" and @style="left:173px;width:156px;z-index:9999"]/div')                                     
         this.machine1_txtBox = page.locator('input[name="cmbOperator"]')
         this.ok_button = page.locator('div[name="cmdOk"]')  
         this.machineNameHeader_txtcheck = page.locator('/html/body/div[2]/div[2]/div/div/div/div[5]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div[17]/input')                 
@@ -61,6 +61,7 @@ exports.MachinePage = class MachinePage
             await this.machine_dropdown3.click() 
             await this.page.waitForLoadState("domcontentloaded");
             await this.userQueriesTxt_name.waitFor({ state: 'visible' })
+            await this.page.waitForTimeout(4000)
             await this.machine_txtBox.click()
             await this.machine1_txtBox.fill(machineNumber)
             await this.ok_button.click()

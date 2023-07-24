@@ -41,6 +41,8 @@ const config: PlaywrightTestConfig = {
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    // Viewport used for all pages in the context.
+    //viewport: { width: 1920, height: 1080 },
     //storageState:'./LoginAuth.json',
   },
 
@@ -54,7 +56,7 @@ const config: PlaywrightTestConfig = {
 
     {
        name: 'firefox',
-       use: { ...devices['Desktop Firefox'] },
+       use: { ...devices['Desktop Firefox'],viewport: { width: 1920, height: 1080 } },
      },
 
     // {
@@ -75,7 +77,7 @@ const config: PlaywrightTestConfig = {
     /* Test against branded browsers. */
      {
        name: 'Microsoft Edge',
-       use: { channel: 'msedge' },
+       use: { channel: 'msedge',viewport: { width: 1920, height: 1080 } },
      },
      {
        name: 'Google Chrome',
