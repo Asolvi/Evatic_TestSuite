@@ -17,10 +17,13 @@ exports.LoginPage = class LoginPage
     }
     async login()
     {
-        await this.username_textbox.fill(appVar.username)
+        const username = process.env.USERNAME ?? '';
+        const password = process.env.PASSWORD ?? '';
+        
+        await this.username_textbox.fill(username)
         await this.continue_button.click()
         await this.password_textbox.click()
-        await this.password_textbox.fill(appVar.password)
+        await this.password_textbox.fill(password)
         await this.password_textbox.press('Enter')
         await this.yes_button.click()
     }

@@ -5,9 +5,14 @@ import { testData } from '../utils/excelUtils'
 import { appVar } from '../appVariables/appVariables'
 import { randomNo } from '../utils/randomNo'
 
+test.beforeEach(async ({ page }) => {
+    const Login = new LoginPage (page)
+    await Login.gotoLoginPage()
+    await Login.login()    
+  });
+
 test('TC_001_Evatic_Regression_CustomerModule', async ({ page }) => {
 
-    const Login = new LoginPage (page)
     const Customer = new CustomerPage(page)
     const rand = randomNo()
 
@@ -22,8 +27,6 @@ test('TC_001_Evatic_Regression_CustomerModule', async ({ page }) => {
     const CustomerNo =  testData('Customer','TC_001_Evatic_Regression_CustomerModule','CustomerNo')
 
     //console.log("************Running the CustomerModuleTestCases*************");
-    await Login.gotoLoginPage()
-    await Login.login()
     await Customer.customerCreation(Custmr,AddrName,Country,Addr1,Addr2,PostCode,City,Phone,CustomerNo+rand)
     console.log('The new customerNo created is ' + await Customer.customerNumber);
     const customerNumber = await Customer.customerNumber;

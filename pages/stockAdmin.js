@@ -38,6 +38,9 @@ exports.StockAdminPage = class StockAdminPage
         this.internalMove_tab = page.getByText('Internal move')
         this.moveFrom_dropdown = page.locator('#id_1851 div').nth(1)
         this.moveTo_dropdown = page.locator('#id_1853 div').nth(1)
+        this.intMve_articleNo = page.locator('(//div[@role="cell" and @col="2" and @row="0"])[2]')
+        this.intMve_quanToMve = page.locator('(//div[@role="cell" and @col="7" and @row="0"])[2]')
+        this.intMve_moveArticlesBtn = page.locator("#id_1848")
 
     }
     
@@ -196,13 +199,14 @@ exports.StockAdminPage = class StockAdminPage
         await test.step("Verify the stock,Article type,Description in the table & update new quantity", async()=>
          {
           await this.page.waitForTimeout(4000);
+          await this.page.pause();
           await this.custTableVerify(articleNumber,ArticleDesc,NewQuan,StockNo1)
          })
         
         }
 
 
-        async internalMove(MoveFrm,MoveTo)
+        async internalMove(MoveFrm,MoveTo,ArticleNumber,QuanToMve)
         {
            await test.step("Click the Internal Move Tab & select Article no,Article Type,Stock No", async()=>
              {
@@ -213,12 +217,29 @@ exports.StockAdminPage = class StockAdminPage
               await this.page.waitForLoadState("domcontentloaded");
               await this.internalMove_tab.click();
               await this.page.pause();
+              await this.page.waitForTimeout(2000);
               await this.moveFrom_dropdown.click();
               await this.page.getByText(MoveFrm).nth(1).click();
               await this.moveTo_dropdown.click();
               await this.page.getByRole('cell', { name: MoveTo }).getByText(MoveTo).click();
-    
-              
+              await this.intMve_articleNo.click()
+              await this.intMve_articleNo.type(ArticleNumber)
+              await this.page.keyboard.press('Control+F3');
+              await this.page.waitForTimeout(2000);
+              //await this.page.getByText(articleNumber).first().click()
+              await this.page.getByRole('cell', { name: ArticleNumber }).getByText(ArticleNumber).click();
+              await this.page.keyboard.press('Tab');
+              await this.page.keyboard.press('Tab');
+              await this.intMve_quanToMve.click();
+              //await this.page.pause();
+              await this.page.waitForTimeout(2000);
+              //await this.intMve_quanToMve.clear();
+              await this.intMve_quanToMve.type(QuanToMve);
+              await this.page.waitForTimeout(1000);
+              await this.intMve_moveArticlesBtn.click()
+              await this.page.waitForTimeout(2000);
+              //await this.page.pause();
+                 
             })
         }
 

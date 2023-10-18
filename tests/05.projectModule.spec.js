@@ -5,9 +5,14 @@ import { testData } from '../utils/excelUtils'
 import { appVar } from '../appVariables/appVariables'
 import { randomNo } from '../utils/randomNo'
 
+test.beforeEach(async ({ page }) => {
+    const Login = new LoginPage (page)
+    await Login.gotoLoginPage()
+    await Login.login()    
+  });
+
 test('TC_001_Evatic_Regression_ProjectModule', async ({ page }) => {
 
-    const Login = new LoginPage (page)
     const Project = new ProjectPage(page)
 
     const rand = randomNo()
@@ -16,8 +21,6 @@ test('TC_001_Evatic_Regression_ProjectModule', async ({ page }) => {
     
     
     //console.log("************Running the ProjectModuleTestCases*************");
-    await Login.gotoLoginPage()
-    await Login.login()
     await Project.projectCreation(MachineNo)
     //console.log('The new ProjectId2 created is ' + await Project.projectNo);
     const projectNumber = await Project.projectNo;

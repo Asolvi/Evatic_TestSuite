@@ -9,7 +9,7 @@ exports.ProjectPage = class ProjectPage
         this.project_dropdown2 = page.locator('//div[@id="id_140"]')
         this.project_dropdown3 = page.locator('//div[@id="id_160"]')
         this.machineNo_txtBox = page.locator('input[name="cmbMachineNo_0"]')
-        this.close_btn = page.locator('#id_1928')
+        this.close_btn = page.locator('#id_1929')
         this.save_btn = page.locator('//div[@id="id_99"]')
         this.no_btn = page.locator('//div[@name="no"]')
         this.project_label = page.locator('(//div[@name="MdiChildPage_frmProjectDetails"])[1]')
@@ -37,6 +37,7 @@ exports.ProjectPage = class ProjectPage
             await this.machineNo_txtBox.fill(machineNo)
             await this.page.keyboard.press('Control+F3');
             await this.page.getByText(machineNo).first().click()   
+            //await this.page.pause();
             await this.close_btn.click()
             await this.save_btn.click()
             await this.page.waitForTimeout(2000);

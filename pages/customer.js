@@ -30,7 +30,7 @@ exports.CustomerPage = class CustomerPage
         this.noResults_popup = page.locator('//html/body/div[1]/div[7]/div[2]/div[3]')
 
         this.status_txtBox = page.locator('//input[@name="cmbCustomerStatus"]')
-        this.customerStatus_textbox = page.locator('#id_1998 div').nth(1)
+        this.customerStatus_textbox = page.locator('#id_1999 div').nth(1)
         this.customerStatus_dropdown_select = page.getByRole('cell', { name: 'Customer' }).getByText('Customer')
 
                
@@ -61,10 +61,10 @@ exports.CustomerPage = class CustomerPage
         await this.save_button.click() 
         await this.page.waitForTimeout(2000);
         await this.detailsTab_link.click()
-        //await this.page.pause();
         await this.page.waitForTimeout(2000);
         await this.status_txtBox.clear();
         await this.status_txtBox.fill('Customer');
+        //await this.page.pause();
         await this.customerStatus_textbox.click()
         await this.page.waitForTimeout(2000);
         await this.customerStatus_dropdown_select.click()
@@ -78,8 +78,9 @@ exports.CustomerPage = class CustomerPage
     }
     async customerSearch(custNo)
     {
-        await this.myEvatic_dropdown.click()
-        await this.customer_dropdown1.click()
+        //await this.page.pause();
+        //await this.myEvatic_dropdown.click()
+        //await this.customer_dropdown1.click()
         await this.customerSearch_Link.click()
         //await this.customer_re_textbox.click()
         await this.customerReSearch_textbox.click()

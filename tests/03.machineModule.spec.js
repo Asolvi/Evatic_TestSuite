@@ -5,9 +5,14 @@ import { testData } from '../utils/excelUtils'
 import { appVar } from '../appVariables/appVariables'
 import { randomNo } from '../utils/randomNo'
 
+test.beforeEach(async ({ page }) => {
+    const Login = new LoginPage (page)
+    await Login.gotoLoginPage()
+    await Login.login()    
+  });
+
 test('TC_001_Evatic_Regression_MachineModule', async ({ page }) => {
 
-    const Login = new LoginPage (page)
     const Machine = new MachinePage(page)
 
     const rand = randomNo()
@@ -17,8 +22,6 @@ test('TC_001_Evatic_Regression_MachineModule', async ({ page }) => {
     const CustomerNo =  testData('Machine','TC_001_Evatic_Regression_MachineModule','CustomerNo')
     
     //console.log("************Running the MachineModuleTestCases*************");
-    await Login.gotoLoginPage()
-    await Login.login()
     await Machine.machineCreation(MachineNo+rand,ModelNo,CustomerNo)
     console.log('The new machineId created is ' + await Machine.machineNumber);
     const machineNumber = await Machine.machineNumber;

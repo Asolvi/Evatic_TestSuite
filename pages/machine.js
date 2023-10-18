@@ -10,7 +10,7 @@ exports.MachinePage = class MachinePage
         this.machine_dropdown3 = page.locator('//div[@id="id_284"]')
         this.modelTxt_name = page.getByText('Model:')
         this.machineNo_txtBox = page.locator('input[name="txtMachineNo"]');           
-        this.modelNo_txtBox = page.locator('#id_1314 div').nth(1)
+        this.modelNo_txtBox = page.locator('#id_1315 div').nth(1)
         this.customerNo_txtBox = page.locator('input[name="cmbCustomerNo"]')
         this.save_btn = page.locator('//div[@id="id_99"]')    
         this.userQueriesTxt_name = page.locator('//div[@name="lblUserQueries"]')

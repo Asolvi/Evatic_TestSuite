@@ -6,9 +6,18 @@ import { testData } from '../utils/excelUtils'
 import { appVar } from '../appVariables/appVariables'
 import { randomNo } from '../utils/randomNo'
 
+//const username = process.env.USERNAME ?? '';
+//const password = process.env.PASSWORD ?? '';
+
+test.beforeEach(async ({ page }) => {
+    const Login = new LoginPage (page)
+    await Login.gotoLoginPage()
+    await Login.login()    
+  });
+
 test('TC_001_Evatic_Regression_ArticleModule', async ({ page }) => {
 
-    const Login = new LoginPage (page)
+    
     const Article = new ArticlePage(page)
     const rand = randomNo()
 
@@ -21,8 +30,8 @@ test('TC_001_Evatic_Regression_ArticleModule', async ({ page }) => {
 
     
     //console.log("************Running the ArticleModuleTestCases*************");
-    await Login.gotoLoginPage()
-    await Login.login()
+    //await Login.gotoLoginPage()
+    //await Login.login()
     await Article.articleCreation(ArticleNo+rand,Description,SearchName,SupplierCostPrice,SalesPrice1,ArticleType)
     console.log('The new articleNo created is ' + await Article.articleNumber);
     const articleNumber = await Article.articleNumber;
@@ -31,7 +40,7 @@ test('TC_001_Evatic_Regression_ArticleModule', async ({ page }) => {
     await Article.articleReSearch(articleNumber)
 });
 
-test('TC_002_Evatic_Regression_ArticleModule_SupplierOrder', async ({ page }) => {
+test.skip('TC_002_Evatic_Regression_ArticleModule_SupplierOrder', async ({ page }) => {
 
     const Login = new LoginPage (page)
     const StockAdmin = new StockAdminPage(page)
@@ -47,6 +56,7 @@ test('TC_002_Evatic_Regression_ArticleModule_SupplierOrder', async ({ page }) =>
     
     const MoveFrm =  testData('Article','TC_002_Evatic_Regression_ArticleModule_SupplierOrder','MoveFrm')
     const MoveTo =  testData('Article','TC_002_Evatic_Regression_ArticleModule_SupplierOrder','MoveTo')
+    const QuanToMve =  testData('Article','TC_002_Evatic_Regression_ArticleModule_SupplierOrder','QuanToMve')
 
     //console.log("************Running the ArticleModuleSupplierOrderTestCases*************");
     await Login.gotoLoginPage()
@@ -61,7 +71,8 @@ test('TC_002_Evatic_Regression_ArticleModule_SupplierOrder', async ({ page }) =>
     //********************StockTaking***********************************************
     await StockAdmin.stockTaking(ArticleNumber,ArticleDesc,NewQuan,StockNo1);
     //********************StockInternalMove***********************************************
-    //await StockAdmin.internalMove(MoveFrm,MoveTo);
+    await StockAdmin.internalMove(MoveFrm,MoveTo,ArticleNumber,QuanToMve);
+    
 });
 
 

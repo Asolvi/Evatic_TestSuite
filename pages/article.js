@@ -74,6 +74,7 @@ exports.ArticlePage = class ArticlePage
         await this.articleno_re_textbox.click()
         await this.articleno_textbox.fill(articleNo) 
         await this.ok_button.click()
+        //await this.page.pause();
         await expect(this.noResults_popup,'Verify the Search ArticleName').toHaveText("No match!")
 
     }

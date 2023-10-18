@@ -5,9 +5,16 @@ import { testData } from '../utils/excelUtils'
 import { appVar } from '../appVariables/appVariables'
 import { randomNo } from '../utils/randomNo'
 
+
+test.beforeEach(async ({ page }) => {
+    const Login = new LoginPage (page)
+    await Login.gotoLoginPage()
+    await Login.login()    
+  });
+
 test('TC_001_Evatic_Regression_OrderModule', async ({ page }) => {
 
-    const Login = new LoginPage (page)
+    
     const Order = new OrderPage (page)
 
     const rand = randomNo()
@@ -17,8 +24,6 @@ test('TC_001_Evatic_Regression_OrderModule', async ({ page }) => {
     
     
     //console.log("************Running the OrderModuleTestCases*************");
-    await Login.gotoLoginPage()
-    await Login.login()
     await Order.orderCreation(CustomerNo,MachineNo)
     console.log('The new OrderId2 created is ' + await Order.orderNo);
     const orderNumber = await Order.orderNo;
