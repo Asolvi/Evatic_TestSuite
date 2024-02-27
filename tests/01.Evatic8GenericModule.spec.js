@@ -71,7 +71,6 @@ test('TC_001_Evatic_Regression_Article_Customer_Machine_Modules', async ({ page 
 
     console.log("************Running the ArticleModuleTestCases*************");
     console.log("************Create a Article Card*************");
-    await page.pause()
     await Article.articleCreation(ArticleNo+rand,Description,SearchName,SupplierCostPrice,SalesPrice1,ArticleType)
     console.log('The new articleNo created is ' + await Article.articleNumber);
     const articleNumber = await Article.articleNumber;
