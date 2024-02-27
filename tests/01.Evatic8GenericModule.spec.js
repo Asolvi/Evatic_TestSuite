@@ -255,7 +255,7 @@ test('TC_003_Evatic_Regression_SalesProject_Module', async ({ page }) => {
       
 });
 
-test.only('TC_004_Evatic_Regression_Project_Module', async ({ page }) => {
+test('TC_004_Evatic_Regression_Project_Module', async ({ page }) => {
 
   test.setTimeout(680000);
   //const Login = new LoginPage (page)
