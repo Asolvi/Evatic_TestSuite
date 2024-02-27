@@ -14,7 +14,7 @@ const config: PlaywrightTestConfig = {
   //globalSetup:"./global-setup",
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 150 * 1000,
+  timeout: 60 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -23,7 +23,7 @@ const config: PlaywrightTestConfig = {
     timeout: 5000
   },
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -54,10 +54,10 @@ const config: PlaywrightTestConfig = {
     
     },
 
-    {
-       name: 'firefox',
-       use: { ...devices['Desktop Firefox'],viewport: { width: 1920, height: 1080 } },
-     },
+    //{
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'],viewport: { width: 1920, height: 1080 } },
+    // },
 
     // {
     //   name: 'webkit',
@@ -65,10 +65,10 @@ const config: PlaywrightTestConfig = {
     // },
 
     /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
+     {
+       name: 'Mobile Chrome',
+       use: { ...devices['Pixel 5'] },
+     },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
