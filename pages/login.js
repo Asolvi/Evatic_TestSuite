@@ -19,7 +19,7 @@ exports.LoginPage = class LoginPage
     async login()
     {
         const username = "evatic.qa@asolvi.com";
-        const password = "wZ@H%401XEbf";
+        const password = "PASSWORD";
         
         await this.username_textbox.fill(username)
         //await this.page.pause()
