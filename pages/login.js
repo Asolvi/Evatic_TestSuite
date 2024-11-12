@@ -18,8 +18,8 @@ exports.LoginPage = class LoginPage
     }
     async login()
     {
-        const username = process.env.USERNAME ?? '';
-        const password = process.env.PASSWORD ?? '';
+        const username = "evatic.qa@asolvi.com";
+        const password = "wZ@H%401XEbf";
         
         await this.username_textbox.fill(username)
         //await this.page.pause()
@@ -28,5 +28,6 @@ exports.LoginPage = class LoginPage
         await this.password_textbox.fill(password)
         await this.password_textbox.press('Enter')
         await this.yes_button.click()
+    
     }
 }

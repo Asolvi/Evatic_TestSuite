@@ -6,11 +6,13 @@ import { testData } from '../utils/excelUtils'
 import { appVar } from '../appVariables/appVariables'
 import { randomNo } from '../utils/randomNo'
 
+
 test.beforeEach(async ({ page }) => {
     const AdminWebLogin = new AdminWebLoginPage (page)
     await AdminWebLogin.gotoLoginPage()
     await AdminWebLogin.login()    
   });
+
 
 test('TC_009_Evatic_Regression_AdminWebModule', async ({ page }) => {
 

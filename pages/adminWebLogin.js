@@ -21,8 +21,8 @@ exports.AdminWebLoginPage = class AdminWebLoginPage
     }
     async login()
     {
-        const username = process.env.USERNAME ?? '';
-        const password = process.env.PASSWORD ?? '';
+        const username = "evatic.qa@asolvi.com";
+        const password = "wZ@H%401XEbf";
         
         await this.signIn_btn.click();
         await this.username_textbox.fill(username)

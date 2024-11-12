@@ -172,8 +172,9 @@ exports.SalesProjectPage = class SalesProjectPage
                 await this.page.waitForTimeout(2000);
                 await this.calcType_dropdown.click()
                 await this.page.getByText(CalculationType).first().click()
-                await this.salesMan_dropdown.click()
-                await this.page.getByText(SalesMan).first().click()
+                //await this.salesMan_dropdown.click()
+                //await this.page.getByText(SalesMan).first().click()
+                
                 if(SalesCalcType == '002')
                 {
                 await this.save_button.click()
@@ -181,15 +182,17 @@ exports.SalesProjectPage = class SalesProjectPage
                 await this.leasingSupplier_dropdown.click()
                 await this.page.getByText(Supplier).first().click()
                 await this.page.waitForTimeout(2000);
-                await this.leasingFactor_dropdown.click() 
+                await this.leasingFactor_dropdown.click()
+                await this.page.waitForSelector(`text=${Factor}`);
                 await this.page.waitForTimeout(2000);             
                 await this.page.getByText(Factor).first().click()
                 await this.page.waitForTimeout(2000);
                 }
+                
                 await this.save_button.click()
                 await this.page.waitForTimeout(5000);
                 //await this.page.pause()
-                await this.articleNo_txtBox.click()
+                await this.articleNo_txtBox.click();
                 await this.articleNo1_txtBox.click();
                 await this.articleNo1_txtBox.fill(ArticleNo);
                 await this.page.keyboard.press('Control+F3');

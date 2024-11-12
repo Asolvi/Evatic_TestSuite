@@ -22,14 +22,15 @@ const config: PlaywrightTestConfig = {
      */
     timeout: 5000
   },
+  workers: 1,
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html'],['line'],['allure-playwright']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -44,55 +45,15 @@ const config: PlaywrightTestConfig = {
     // Viewport used for all pages in the context.
     //viewport: { width: 1920, height: 1080 },
     //storageState:'./LoginAuth.json',
+    headless: false,
+    
   },
 
-  /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'],viewport: { width: 1920, height: 1080 }},
-    
-    },
-
-    //{
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'],viewport: { width: 1920, height: 1080 } },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
-
-    /* Test against mobile viewports. */
-     {
-       name: 'Mobile Chrome',
-       use: { ...devices['Pixel 5'] },
-     },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-     {
-       name: 'Microsoft Edge',
-       use: { channel: 'msedge',viewport: { width: 1920, height: 1080 } },
-     },
-     {
-       name: 'Google Chrome',
-       use: { channel: 'chrome' },
-     },
+  testMatch: [
+    'tests/01.Evatic8GenericModule.spec.js',
+    'tests/02.EvaticCustomerWebModule.spec.js',
+    'tests/03.EvaticAdminWebModule.spec.js'
   ],
 
-  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   port: 3000,
-  // },
-//});
 };
 export default config;

@@ -65,7 +65,7 @@ exports.StockAdminPage = class StockAdminPage
      {
         await test.step("Navigate to the stock Admin Navigation & enter supplierNo,supplierName,Stock no", async()=>
           {            
-            //await this.myEvatic_dropdown.click()
+            await this.myEvatic_dropdown.click()
             await this.article_dropdown1.click()
             await this.stockAdmin_nav.click()
             await this.page.waitForLoadState("domcontentloaded");
@@ -80,6 +80,7 @@ exports.StockAdminPage = class StockAdminPage
             await this.page.getByText(stockNo, { exact: true }).click()
           })  
            
+          //Will not continue after this
            await test.step("Fill the ArticleNo,Stock details", async()=>
           {
             
@@ -125,7 +126,7 @@ exports.StockAdminPage = class StockAdminPage
               this.print_btn.click()
               
             ])
-            await download.saveAs('C:/Users/RajanJeyaraj/OneDrive - Asolvi AS/Rajan/Rajan/Projects/04.EvaticAutomation-Collide/downloadedFiles/Article1'+ download.suggestedFilename())
+            await download.saveAs('C:\Users\OdaAmundsen\OneDrive - Asolvi AS\Automation'+ download.suggestedFilename())
             await this.page.waitForTimeout(2000)
  
             })
@@ -254,7 +255,7 @@ exports.StockAdminPage = class StockAdminPage
                 this.intMve_moveArticlesBtn.click()
                 
               ])
-              await download.saveAs('C:/Users/RajanJeyaraj/OneDrive - Asolvi AS/Rajan/Rajan/Projects/04.EvaticAutomation-Collide/downloadedFiles/Article2'+ download.suggestedFilename())
+              await download.saveAs('C:\Users\OdaAmundsen\OneDrive - Asolvi AS\Automation'+ download.suggestedFilename())
               await this.page.waitForTimeout(4000);
               await this.stockAdmin_closeBtn.click();
               

@@ -402,7 +402,7 @@ exports.ProjectPage = class ProjectPage
                                 
               ])
               
-              await download.saveAs('C:/Users/RajanJeyaraj/OneDrive - Asolvi AS/Rajan/Rajan/Projects/04.EvaticAutomation-Collide/downloadedFiles/Project1'+ download.suggestedFilename())
+              await download.saveAs('C:\Users\OdaAmundsen\OneDrive - Asolvi AS\Automation'+ download.suggestedFilename())
               await this.page.waitForTimeout(3000);     
               //await this.page.pause()             
 

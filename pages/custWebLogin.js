@@ -11,6 +11,9 @@ exports.CustWebLoginPage = class CustWebLoginPage
     this.password_textbox = page.getByPlaceholder('Password')
     this.signIn_button = page.getByRole('button', { name: 'Sign in' })
     this.yes_button = page.getByRole('button', { name: 'Yes' })
+    this.select_customer = page.getByRole('listbox', { name: 'Select Customer' }).locator('span').first()
+    this.rajan_customer = page.getByRole('option', { name: 'RajanCustomer' })
+    this.continue_button2 = page.getByRole('button', { name: 'Continue >' })
     }
 
     async gotoLoginPage()
@@ -20,8 +23,8 @@ exports.CustWebLoginPage = class CustWebLoginPage
     }
     async login()
     {
-        const username = process.env.USERNAME ?? '';
-        const password = process.env.PASSWORD ?? '';
+        const username = "evatic.qa@asolvi.com";
+        const password = "wZ@H%401XEbf";
         
         await this.login_btn.click();
         await this.username_textbox.fill(username)
@@ -30,5 +33,11 @@ exports.CustWebLoginPage = class CustWebLoginPage
         await this.password_textbox.fill(password)
         await this.signIn_button.click();
         await this.yes_button.click()
+        await this.page.waitForSelector('text=Select Customer', { state: 'visible' });
+        await this.select_customer.click()
+        await this.rajan_customer.click()
+        await this.continue_button2.click()
     }
 }
+
+//page.getByRole('listbox', { name: 'Select Customer' }).locator('span').nth(2)

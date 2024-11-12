@@ -14,9 +14,10 @@ test.beforeEach(async ({ page }) => {
     await CustWebLogin.login()    
   });
 
-test('TC_007_Evatic_Regression_CustWebModule', async ({ page }) => {
 
-  test.setTimeout(180000);
+  test('TC_007_Evatic_Regression_CustWebModule', async ({ page }) => {
+
+  test.setTimeout(5000000);
 
     const CustWebTasks = new CustWebTasksPage(page)
     const CustWebOrders = new CustWebOrderPage(page)

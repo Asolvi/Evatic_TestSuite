@@ -5,7 +5,8 @@ exports.ArticlePage = class ArticlePage
     {
         this.page = page
         //this.myEvatic_dropdown = page.locator('//div[@id="id_119"]')
-        this.myEvatic_dropdown = page.locator('//div[contains(@name,"title") and (text()="1 My Evatic")]')
+        this.myEvatic_dropdown = page.getByText('1 My Evatic')
+        //this.myEvatic_dropdown = page.locator('//div[contains(@name,"title") and (text()="1 My Evatic")]')
         this.article_dropdown1 = page.locator('//div[contains(@name,"title") and contains(text(),"3 Article")]')
         this.article_dropdown2 = page.locator('//div[contains(@name,"title") and (text()="Article")]')
         this.article_dropdown3 = page.locator('//div[contains(@name,"title") and (text()="Article search")]')

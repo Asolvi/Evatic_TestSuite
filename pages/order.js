@@ -32,7 +32,7 @@ exports.OrderPage = class OrderPage
 
         this.closeX1_btn = page.locator('//div[@name="mdiTabView"]/div[1]/div[1]/div/div[2]//div[@name="close-button"]')
         this.closeX3_btn = page.locator('//div[@name="MdiChildPage_frmStockAdmin"]/div[@name="close-button"]')
-
+        this.closeX5_btn = page.locator('.qx-window-captionbar-modal-active > div > div')
         
         this.article_dropDown = page.locator('input[name="drdArticle"]')
         //this.stock_txtBox = page.locator('//div[@role="cell" and @col="10" and @row="0" and @class="qx-cell qx-table-cell-even-borderBoth"]') 
@@ -49,7 +49,8 @@ exports.OrderPage = class OrderPage
 
         this.makeSuppOrd_chkBox = page.locator('//div[@name="chkMakeSupplierOrder"]')
         this.ok_button1 = page.locator('//div[@name="cmdOk"]')
-        this.closeX_button = page.locator('.qx-window-captionbar-maximized-modal-active > div > div').first()
+        //this.closeX_button = page.locator('.qx-window-captionbar-maximized-modal-active > div > div').first()
+        this.closeX_button = page.locator('.qx-window-captionbar-modal-active > div:nth-child(2) > div')
         this.delivery_tab = page.locator('//div[@name="label" and (text()="  Delivery  ")]')
         this.packingSlip_button = page.locator('//div[@name="cmdDeliveryList"]/div[@name="label" and text()="Packing slip"]')
         this.closeOrder_button = page.locator('//div[@name="MdiChildPage_frmOrder"]/div[@name="close-button"]')
@@ -229,6 +230,7 @@ exports.OrderPage = class OrderPage
                  //await this.page.pause()
                  //await expect(this.page.locator('//div[@role="cell" and @col="77" and @row="0"]/div')).toContainText('red');
                  await this.page.waitForTimeout(3000);
+                 console.log("Checkpoint 0")
 
                  if(serialNumInd == "S")
                    {
@@ -252,22 +254,29 @@ exports.OrderPage = class OrderPage
                  if(serialNumInd == "I")
                    {
                           await this.priOrdCon_chkBox.click()
+                          console.log("Checkpoint2")
                    }
-
+              
                    if(serialNumInd == "M")
                    {
                           await this.makeSuppOrd_chkBox.click()
+                          console.log("Checkpoint3")
                           //await this.page.pause();
+                          
                    }
                   
                  await this.page.waitForTimeout(2000)
-                 await this.ok_button1.click()                 
+                 await this.ok_button1.click()             
                  await this.page.waitForTimeout(8000)
 
+                 
                  if(serialNumInd == "I")
                    {
-                      await this.closeX_button.click()
+                      await this.closeX5_btn.click();
+                      console.log("Checkpoint4")
+                    
                    }
+                      
                    if(serialNumInd == "I" || serialNumInd == "S")
                    {
                     await this.delivery_tab.click()
@@ -278,7 +287,7 @@ exports.OrderPage = class OrderPage
                       
                     ])
                     //const path = download.suggestedFilename();
-                    await download.saveAs('C:/Users/RajanJeyaraj/OneDrive - Asolvi AS/Rajan/Rajan/Projects/04.EvaticAutomation-Collide/downloadedFiles/Order1'+ download.suggestedFilename())
+                    await download.saveAs('C:/Users/OdaAmundsen/OneDrive - Asolvi AS\Automation'+ download.suggestedFilename())
                     await this.page.waitForTimeout(2000);   
                                   
                     await this.page.waitForTimeout(4000)
@@ -337,15 +346,14 @@ exports.OrderPage = class OrderPage
                         
                       ])
                       //const path = download.suggestedFilename();
-                      await download.saveAs('C:/Users/RajanJeyaraj/OneDrive - Asolvi AS/Rajan/Rajan/Projects/04.EvaticAutomation-Collide/downloadedFiles/Order2'+ download.suggestedFilename())
+                      await download.saveAs('C:/Users/OdaAmundsen/OneDrive - Asolvi AS\Automation'+ download.suggestedFilename())
                       //await testInfo.attach('downloaded',{path:path})
                       await this.page.waitForTimeout(2000);   
                                  
                       
                       //await this.print_icon.click()
                       
-                      
-                      
+                  
                       await this.page.waitForTimeout(2000)
 
                    })       
@@ -418,7 +426,7 @@ exports.OrderPage = class OrderPage
             this.packingSlip_button.click()
             
           ])
-          await download.saveAs('C:/Users/RajanJeyaraj/OneDrive - Asolvi AS/Rajan/Rajan/Projects/04.EvaticAutomation-Collide/downloadedFiles/Order3'+ download.suggestedFilename())
+          await download.saveAs('C:/Users/OdaAmundsen/OneDrive - Asolvi AS\Automation'+ download.suggestedFilename())
           
           
           await this.page.waitForTimeout(8000)
@@ -477,7 +485,7 @@ exports.OrderPage = class OrderPage
             this.printOrderOk_btn.click()
             
           ])
-          await download.saveAs('C:/Users/RajanJeyaraj/OneDrive - Asolvi AS/Rajan/Rajan/Projects/04.EvaticAutomation-Collide/downloadedFiles/Order4'+ download.suggestedFilename())
+          await download.saveAs('C:/Users/OdaAmundsen/OneDrive - Asolvi AS\Automation'+ download.suggestedFilename())
 
           
           await this.page.waitForTimeout(2000);
