@@ -20,7 +20,7 @@ test.beforeEach(async ({ page }) => {
   });
 
 
-test('TC_001_Evatic_Regression_Article_Customer_Machine_Modules', async ({ page }) => {
+test.only('TC_001_Evatic_Regression_Article_Customer_Machine_Modules', async ({ page }) => {
 
     test.setTimeout(500000);
     const Login = new LoginPage (page)
@@ -137,7 +137,7 @@ test('TC_001_Evatic_Regression_Article_Customer_Machine_Modules', async ({ page 
 });
 
 
-test.only('TC_002_Evatic_Regression_Order_Module', async ({ page }) => {
+test('TC_002_Evatic_Regression_Order_Module', async ({ page }) => {
 
     test.setTimeout(600000);
     const Login = new LoginPage (page)
@@ -154,6 +154,7 @@ test.only('TC_002_Evatic_Regression_Order_Module', async ({ page }) => {
     const ArticleNummer =  testData('Order','TC_003_Evatic_Regression_OrderModule','ArticleNumber')
     const SupplierNo =  testData('Order','TC_003_Evatic_Regression_OrderModule','SupplierNo')
     const Date =  testData('Article','TC_002_Evatic_Regression_ArticleModule_SupplierOrder','Date')
+    const Customer = new CustomerPage(page)
     const PackingSlipNo =  testData('Article','TC_002_Evatic_Regression_ArticleModule_SupplierOrder','PackingSlipNo')
 
     console.log("************Running the OrderModuleTestCases*************");
@@ -175,7 +176,7 @@ test.only('TC_002_Evatic_Regression_Order_Module', async ({ page }) => {
     
    console.log("************Deliver and Invoice a Article*************");
    //await page.pause();
-    await Order.deliverAndInvoiceArticle(CustomerNo2,MachineNo1,ArticleNumber,StockNo,'','I')
+  //await Order.deliverAndInvoiceArticle(CustomerNo2,MachineNo1,ArticleNumber,StockNo,'','I')
 
     console.log("************Deliver and Invoice a Serial Article*************");
     await page.pause();

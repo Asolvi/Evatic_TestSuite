@@ -237,7 +237,7 @@ exports.OrderPage = class OrderPage
                  
                         await this.serialNum_txtBox.click()
                         await this.serialNum_dropDown.click()
-                        await this.page.getByText(serialNum).click()
+                        await this.page.getByText("RAW003").click()
                     }
 
                   const ordName = await this.order_label.textContent();

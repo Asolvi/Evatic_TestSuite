@@ -172,8 +172,8 @@ exports.SalesProjectPage = class SalesProjectPage
                 await this.page.waitForTimeout(2000);
                 await this.calcType_dropdown.click()
                 await this.page.getByText(CalculationType).first().click()
-                //await this.salesMan_dropdown.click()
-                //await this.page.getByText(SalesMan).first().click()
+                await this.salesMan_dropdown.click()
+                await this.page.getByText(SalesMan).first().click()
                 
                 if(SalesCalcType == '002')
                 {
